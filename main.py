@@ -24,6 +24,8 @@ parser.add_argument('--load_attention_scores_path', default=None, help='if speci
 parser.add_argument('--plot_figs_per_head', action='store_true', help='whether to plot heatmap for each head')
 parser.add_argument('--save_fig_path', default='./vis')
 parser.add_argument('--num_figs_per_row', type=int, default=4)
+parser.add_argument('--start_layer', type=int, default=0)
+parser.add_argument('--end_layer', type=int, default=-1)
 args = parser.parse_args()
 
 if __name__ == "__main__":
@@ -48,7 +50,9 @@ if __name__ == "__main__":
             plot_figs_per_head=args.plot_figs_per_head,
             save_fig_path=args.save_fig_path,
             ignore_first_token=args.ignore_first_token,
-            num_figs_per_row=args.num_figs_per_row
+            num_figs_per_row=args.num_figs_per_row,
+            start_layer=args.start_layer,
+            end_layer=args.end_layer
         )
 
         
