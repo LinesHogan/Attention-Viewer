@@ -4,7 +4,7 @@ A tool for visualizing attention-score heatmap in generative LLMs
 ## Setup
 + Clone this repo:
   ```sh
-  git clone https://github.com/wln20/Attention-Viewer.git
+  git clone https://github.com/LinesHogan/Attention-Viewer.git
   cd Attention-Viewer
   ```
 + Install dependencies:
