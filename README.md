@@ -92,7 +92,7 @@ python main.py \
 --token_focus
 ```
 
-![](assets\token_33_attention_untuned.jpg)
+![assets/token_33_attention_untuned.jpg](assets/token_33_attention_untuned.jpg)
 
 In this setting, you can set the plotting range of layers by `--start_layer` and `--end_layer` arguments. For example, to visualize the attention weights of layer 1 to layer 3:
 ```sh
