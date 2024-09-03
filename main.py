@@ -16,7 +16,7 @@ parser.add_argument('--model_id', required=True, help='the name you give to the 
 parser.add_argument('--model_adapter', default=None, help='the path of the adapter')
 parser.add_argument('--seed', type=int, default=2024, help='random seed')
 # input config
-parser.add_argument('--prompt', default='Summer is warm. Winter is cold.\n', help='the prompt to visualize. If you are using chat model, you need to provide prompt in code rather than command line')
+parser.add_argument('--prompt', default=None, help='the prompt to visualize. If you are using chat model, you need to provide prompt in code rather than command line')
 parser.add_argument('--ignore_first_token', action='store_true', help='whether to ignore the start token when plotting')
 # saving and loading of attention scores
 parser.add_argument('--save_attention_scores', action='store_true', help='whether to store the attention scores')
