@@ -78,6 +78,34 @@ python main.py \
 
 ![assets/layer_0_llama.jpg](assets/all_layers_avg_llama_ignore_first_token.jpg)
 
+You can change the normalization method for the heatmap by setting `--numerical_norm`. Your choice include 'log', 'linear', 'power'.
+
+### Token Focus
+
+If you are more interested in the view of each token's attention, the `--token_focus` argument could be added to plot the attention heatmap for each token's attention rather than for layers:
+```sh
+python main.py \
+--model_path meta-llama/Llama-2-7b-chat-hf \
+--model_id llama2-7b-chat \
+--prompt 'Summer is warm. Winter is cold.\n' \
+--save_fig_path ./vis \
+--token_focus
+```
+
+![](assets\token_33_attention_untuned.jpg)
+
+In this setting, you can set the plotting range of layers by `--start_layer` and `--end_layer` arguments. For example, to visualize the attention weights of layer 1 to layer 3:
+```sh
+python main.py \
+--model_path meta-llama/Llama-2-7b-chat-hf \
+--model_id llama2-7b-chat \
+--prompt 'Summer is warm. Winter is cold.\n' \
+--save_fig_path ./vis \
+--token_focus
+--start_layer 1
+--end_layer 3
+```
+
 More details and features could be found in the appendix. 
 
 ## Advanced Usage: Visualizing Quantized Model's attention
@@ -128,3 +156,7 @@ Below is a full list of `attn_viewer.core.view_attention`'s arguments:
 + `save_fig_path`: The path to save the attention heatmaps. The figures would be saved under this directory: `{save_fig_path}/{model_id}`.
 + `plot_figs_per_head`: A bool value indicating whether to plot the attention heatmap on each attention-head of each layer (default: `False`). If set to `False`, only one figure showing each layer's average attention weights along all heads would be saved to `{save_fig_path}/{model_id}/all_layers_avg.jpg` . And if set to `True`, the attention heatmap of each head of the i'th layer would be saved to `{save_fig_path}/{model_id}/layer_{i}.jpg`, where `i` would be ranged from `0` to `num_hidden_layers-1`.
 + `num_figs_per_row`: An int value indicating how many heatmaps would be filled in one row of a figure (default: `4`).
++ `start_layer`: An int value indicating the starting layer to plot the attention heatmaps (default: `0`).
++ `end_layer`: An int value indicating the ending layer to plot the attention heatmaps (default: `num_hidden_layers-1`).
++ `per_token_focus`: A bool value indicating whether to plot the attention heatmap for each token's attention rather than for layers.
++ `numerical_norm`: The normalization method for the heetmap, could be 'log', 'linear' or 'power' (default: 'log').
